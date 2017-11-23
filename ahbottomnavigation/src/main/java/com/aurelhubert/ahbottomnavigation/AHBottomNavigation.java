@@ -465,7 +465,7 @@ public class AHBottomNavigation extends FrameLayout {
 				});
 				icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getDrawable(context),
 						current ? itemActiveColor : itemInactiveColor, forceTint));
-				title.setTextColor(current ? itemActiveColor : itemInactiveColor);
+				title.setTextColor(current ? titleColorActive : itemInactiveColor);
 				view.setSoundEffectsEnabled(soundEffectsEnabled);
 			} else {
 				icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getDrawable(context),
@@ -582,7 +582,7 @@ public class AHBottomNavigation extends FrameLayout {
 			if (itemsEnabledStates[i]) {
 				icon.setImageDrawable(AHHelper.getTintDrawable(items.get(i).getDrawable(context),
 						currentItem == i ? itemActiveColor : itemInactiveColor, forceTint));
-				title.setTextColor(currentItem == i ? itemActiveColor : itemInactiveColor);
+				title.setTextColor(currentItem == i ? titleColorActive : itemInactiveColor);
 				title.setAlpha(currentItem == i ? 1 : 0);
 				view.setOnClickListener(new OnClickListener() {
 					@Override
@@ -663,7 +663,7 @@ public class AHBottomNavigation extends FrameLayout {
 				icon.setSelected(true);
 				AHHelper.updateTopMargin(icon, inactiveMarginTop, activeMarginTop);
 				AHHelper.updateLeftMargin(notification, notificationInactiveMarginLeft, notificationActiveMarginLeft);
-				AHHelper.updateTextColor(title, itemInactiveColor, itemActiveColor);
+				AHHelper.updateTextColor(title, itemInactiveColor, titleColorActive);
 				AHHelper.updateTextSize(title, inactiveSize, activeSize);
 				AHHelper.updateDrawableColor(context, items.get(itemIndex).getDrawable(context), icon,
 						itemInactiveColor, itemActiveColor, forceTint);
@@ -724,7 +724,7 @@ public class AHBottomNavigation extends FrameLayout {
 				icon.setSelected(false);
 				AHHelper.updateTopMargin(icon, activeMarginTop, inactiveMarginTop);
 				AHHelper.updateLeftMargin(notification, notificationActiveMarginLeft, notificationInactiveMarginLeft);
-				AHHelper.updateTextColor(title, itemActiveColor, itemInactiveColor);
+				AHHelper.updateTextColor(title, titleColorActive, itemInactiveColor);
 				AHHelper.updateTextSize(title, activeSize, inactiveSize);
 				AHHelper.updateDrawableColor(context, items.get(currentItem).getDrawable(context), icon,
 						itemActiveColor, itemInactiveColor, forceTint);
@@ -787,7 +787,7 @@ public class AHBottomNavigation extends FrameLayout {
 					AHHelper.updateTopMargin(icon, inactiveMargin, activeMarginTop);
 					AHHelper.updateLeftMargin(notification, notificationInactiveMarginLeft, notificationActiveMarginLeft);
 					AHHelper.updateTopMargin(notification, notificationInactiveMarginTop, notificationActiveMarginTop);
-					AHHelper.updateTextColor(title, itemInactiveColor, itemActiveColor);
+					AHHelper.updateTextColor(title, itemInactiveColor, titleColorActive);
 					AHHelper.updateWidth(container, notSelectedItemWidth, selectedItemWidth);
 				}
 
@@ -854,7 +854,7 @@ public class AHBottomNavigation extends FrameLayout {
 					AHHelper.updateTopMargin(icon, activeMarginTop, inactiveMargin);
 					AHHelper.updateLeftMargin(notification, notificationActiveMarginLeft, notificationInactiveMarginLeft);
 					AHHelper.updateTopMargin(notification, notificationActiveMarginTop, notificationInactiveMarginTop);
-					AHHelper.updateTextColor(title, itemActiveColor, itemInactiveColor);
+					AHHelper.updateTextColor(title, titleColorActive, itemInactiveColor);
 					AHHelper.updateWidth(container, selectedItemWidth, notSelectedItemWidth);
 				}
 
@@ -1081,6 +1081,15 @@ public class AHBottomNavigation extends FrameLayout {
 	public void setAccentColor(int accentColor) {
 		this.titleColorActive = accentColor;
 		this.itemActiveColor = accentColor;
+		createItems();
+	}
+
+	/**
+	 * Set the accent color for the title only
+	 * @param color the new accent color
+	 */
+	public void setTitleAccentColor(int color) {
+		this.titleColorActive = color;
 		createItems();
 	}
 
