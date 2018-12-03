@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
+import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
